@@ -2,7 +2,7 @@ import './login.css'
 import { Room,Cancel } from '@material-ui/icons'
 import { useState } from 'react'
 import { useRef } from 'react';
-import axios from 'axios';
+import { axiosInstance } from '../config';
 
 function Login({setShowLogin,myStorage,setCurrentUser}) {
   const [showError,setShowError]=useState(false);
@@ -17,7 +17,7 @@ function Login({setShowLogin,myStorage,setCurrentUser}) {
     }
 
     try {
-      const res=await axios.post('/users/login',user)
+      const res=await axiosInstance.post('/users/login',user)
       myStorage.setItem("user",res.data.username)
       setCurrentUser(res.data.username);
       setShowError(false);

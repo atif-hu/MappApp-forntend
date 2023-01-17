@@ -2,7 +2,7 @@ import './register.css'
 import { Room,Cancel } from '@material-ui/icons'
 import { useState } from 'react'
 import { useRef } from 'react'
-import axios from 'axios'
+import { axiosInstance } from '../config'
 
 function Register({setShowRegister}) {
 
@@ -22,7 +22,7 @@ function Register({setShowRegister}) {
         };
 
         try {
-            await axios.post('/users/register',newUser)
+            await axiosInstance.post('/users/register',newUser)
             setSuccess(true);
             setError(false);
         } catch (err) {

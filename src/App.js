@@ -3,7 +3,7 @@ import {Map,Marker,Popup} from 'react-map-gl';
 import "mapbox-gl/dist/mapbox-gl.css";
 import {Room,Star} from "@material-ui/icons"
 import './app.css'
-import axios from 'axios'
+import {axiosInstance} from './config.js'
 import {format} from 'timeago.js'
 import Register from "./components/Register";
 import Login from "./components/Login";
@@ -30,7 +30,7 @@ function App() {
   useEffect(()=>{
     const getPins=async()=>{
         try {
-          const res=await axios.get('/pins');
+          const res=await axiosInstance.get('/pins');
           setPins(res.data);
         } catch (err) {
           console.log(err)
@@ -64,7 +64,7 @@ function App() {
     }
 
     try {
-        const res=await axios.post('/pins',newPin);
+        const res=await axiosInstance.post('/pins',newPin);
         setPins([...pins,res.data]);
         setNewPlace(null);
     } catch (err) {
