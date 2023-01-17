@@ -41,5 +41,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://mappapp-api.onrender.com/api"
+  "proxy": "https://mappapp-api.onrender.com/"
 }
